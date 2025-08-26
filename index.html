@@ -77,12 +77,6 @@
     @supports not (backdrop-filter: blur(1px)){
       .navbar-navy{ background-color: var(--nav-bg-fallback); }
     }
-
-    .brand-logo{
-      display:block;
-      height: 5vw;
-      width:7vw;
-    }
           
 
     /* Acentos naranjos */
@@ -123,6 +117,27 @@
         text-transform: uppercase;
     }
 
+    .navbar-brand {
+      display: flex;
+      align-items: center;   /* centra verticalmente logo y texto */
+      gap: .5rem;
+    }
+
+    /* Logo base (para desktop y pantallas grandes) */
+    .brand-logo {
+      height: clamp(60px, 8vw, 140px);  /* en PC puede llegar a 100px */
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* En pantallas chicas el logo puede ser un poco más grande */
+    @media (max-width: 576px) {
+      .brand-logo {
+        height: 69px;   /* un poco más que 69px, se ve mejor en celu */
+      }
+    }
+
+
       
   </style>
 
@@ -133,7 +148,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm navbar-navy">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
-            <img src="/PrimerWebSite/naranjoGarage.jpg" alt="Naranjo Garage" class="brand-logo">
+            <img src="/PrimerWebSite/NaranjoGarage_final.png" alt="Naranjo Garage" class="brand-logo">
             <span class="brand-text fill-white">
                 <span class="brand-naranjo">Naranjo</span>
                 <span class="brand-garage">Garage</span>
