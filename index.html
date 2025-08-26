@@ -125,19 +125,10 @@
 
     /* Logo base (para desktop y pantallas grandes) */
     .brand-logo {
-      height: clamp(60px, 8vw, 140px);  /* en PC puede llegar a 100px */
+      height: clamp(60px, 8vw, 120px);  /* en PC puede llegar a 100px */
       width: auto;
       object-fit: contain;
     }
-
-    /* En pantallas chicas el logo puede ser un poco más grande */
-    @media (max-width: 576px) {
-      .brand-logo {
-        height: 69px;   /* un poco más que 69px, se ve mejor en celu */
-      }
-    }
-
-
       
   </style>
 
