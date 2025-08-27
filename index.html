@@ -23,8 +23,7 @@
     .brand-text{
       display:flex; 
       align-items:baseline;
-      gap:.4rem;
-      white-space: nowrap;       /* evita que se corte en móvil */
+      gap:.2rem;
       line-height: 1;
     }
 
@@ -44,6 +43,7 @@
       text-transform:uppercase;
       letter-spacing:.2em;            /* menos tracking para legibilidad */
       font-size: clamp(13px, 2.2vw, 18px);
+      color:#fff;
       -webkit-text-stroke: 0.8px #000;/* contorno negro */
 
     }
@@ -108,26 +108,36 @@
       font-family:"Teko";
       font-size: clamp(12px, 2vw, 28px);
       text-transform: uppercase;
-      margin-top: 10px;
+    }
+    
+    .brand-logo { 
+     width:38vw;
+     height: auto;
     }
 
-    #BotonWsp1 .btn{
-        font-family: "Teko", sans-serif;
-        font-size: 1.2vw;
-        text-transform: uppercase;
+    /* SM (≥576px) */
+    @media (min-width: 576px) {
+      .brand-logo { width: 30vw; }
     }
 
-    .navbar-brand {
-      display: flex;
-      align-items: center;   /* centra verticalmente logo y texto */
-      gap: .5rem;
+    /* MD (≥768px) */
+    @media (min-width: 768px) {
+      .brand-logo { width: 28vw; }
     }
 
-    /* Logo base (para desktop y pantallas grandes) */
-    .brand-logo {
-      height: clamp(60px, 8vw, 120px);  /* en PC puede llegar a 100px */
-      width: auto;
-      object-fit: contain;
+    /* LG (≥992px) */
+    @media (min-width: 992px) {
+      .brand-logo { width: 22vw; }
+    }
+
+    /* XL (≥1200px) */
+    @media (min-width: 1200px) {
+      .brand-logo { width: 18vw; }
+    }
+
+    /* XXL (≥1400px) */
+    @media (min-width: 1400px) {
+      .brand-logo { width: 12vw; }
     }
       
   </style>
@@ -137,38 +147,33 @@
 <body>
   <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm navbar-navy">
-        <div class="container">
+        <div class="container-fluid">
+
             <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
-            <img src="/PrimerWebSite/NaranjoGarage_final.png" alt="Naranjo Garage" class="brand-logo">
-            <span class="brand-text fill-white">
-                <span class="brand-naranjo">Naranjo</span>
-                <span class="brand-garage">Garage</span>
-            </span>
+              <img src="/PrimerWebSite/NaranjoGarage_final.tmp.tmp.png" alt="Naranjo Garage" class="brand-logo"> 
             </a>
 
+<!--           <span class="brand-text fill-white">
+              <span class="brand-naranjo">Naranjo</span>
+              <span class="brand-garage">Garage</span>
+            </span>
+          -->         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
-            aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
-            <span class="navbar-toggler-icon"></span>
+              aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
+              <span class="navbar-toggler-icon"></span>
             </button>
 
             <div id="navMain" class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-1 gap-lg-2">
-                <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="#trabajos">Trabajos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                <div id="BotonWsp1">
-                  <li class="nav-item ms-lg-2">
-                    <a class="btn btn-success btn-sm" href="https://wa.me/56912345678" target="_blank" rel="noopener">
-                      <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                    </a>
-                  </li>
-                </div>
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item fs-2"><a class="nav-link" href="#inicio">Inicio</a></li>
+                <li class="nav-item fs-2"><a class="nav-link" href="#servicios">Servicios</a></li>
+                <li class="nav-item fs-2"><a class="nav-link" href="#trabajos">Trabajos</a></li>
+                <li class="nav-item fs-2"><a class="nav-link" href="#contacto">Contacto</a></li>
             </ul>
             </div>
         </div>
     </nav>
-    <hr>
+    
 
 
   <!-- CONTENIDO 2-8-2 -->
@@ -201,7 +206,7 @@
 
       <!-- Col 8 (centro) -->
       <section class="col-12 col-lg-8">
-        <!-- Hero -->
+        <!-- carrousel--->
         <div id="carouselExampleControls" class="carousel slide" data-bd-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -345,7 +350,7 @@
 
   <!-- Botón flotante WhatsApp -->
   <a class="btn btn-success rounded-pill btn-wa" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp fa-lg"></i>
+    <i class="fa-brands fa-whatsapp fa-2x"></i>
   </a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
