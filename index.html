@@ -3,50 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Taller Mecánico — WebPage 2-8-2</title>
+  <title>Naranjo Garage</title>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@700;800&family=Michroma&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
+    :root {
       --nav-h: 84px;
-      --accent: #F15A24;
-      --nav-bg: rgba(11,31,58,.85);
-      --nav-bg-fallback: rgba(11,31,58,.92);
-    }
+      --brand: #FF6B00;
 
-    .brand-text{
-      display:flex; 
-      align-items:baseline;
-      gap:.2rem;
-      line-height: 1;
-    }
-
-    .brand-naranjo{
-      font-family:"AirMillhouse", sans-serif;
-      text-transform:uppercase;
-      font-style: italic;
-      font-size: clamp(28px, 5vw, 54px);
-      color:#F15A24;
-      transform: skewX(-10deg);
-      -webkit-text-stroke: 1.5px #000;/* contorno negro */
-    }
-
-    .brand-garage{
-      font-family:"AirMillhouse", sans-serif;
-      font-style: italic;
-      text-transform:uppercase;
-      letter-spacing:.2em;            /* menos tracking para legibilidad */
-      font-size: clamp(13px, 2.2vw, 18px);
-      color:#fff;
-      -webkit-text-stroke: 0.8px #000;/* contorno negro */
-
-    }
+      --primary: #C2410C;
+      --primary-hover: #9A3412;
+      --primary-pressed: #7C2D12;
+      --accent: #06B6D4;
+      --accent-hover: #0891B2;
+      --bg: #0E1116;
+      --surface: #161A20;
+      --surface-2: #1F2430;
+      --border: #2A2F3A;
+      --text: #F3F4F6;
+      --text-muted: #A3AAB8;
+      --accent-dark: #0891B2; /* más oscuro que --accent (#06B6D4) */
+      --nav-bg-fallback: var(--surface-2);
+      --black: var(--bg);
+      --white: var(--text);
+      --gray-dark: var(--surface-2);
+      --gray-mid: var(--surface);
+      --gray-light: var(--border);
+        }
     
     /* Scroll suave + offset por navbar fija */
     html { scroll-behavior: smooth; }
@@ -70,7 +58,7 @@
 
     /* Navbar navy translúcida */
     .navbar-navy{
-      background-color: var(--nav-bg);
+      background-color: var(--surface-2);
       backdrop-filter: saturate(160%) blur(6px);
       -webkit-backdrop-filter: saturate(160%) blur(6px);
     }
@@ -78,31 +66,12 @@
       .navbar-navy{ background-color: var(--nav-bg-fallback); }
     }
           
-
-    /* Acentos naranjos */
-    .text-accent{ color: var(--accent) !important; }
-    .btn-accent{ color:#fff; background: var(--accent); border-color: var(--accent); }
-    .btn-accent:hover{ color:#fff; background:#d94d1e; border-color:#d94d1e; }
-
     /* Hover/activo en links */
     .navbar-navy .nav-link{ transition: color .15s ease; }
     .navbar-navy .nav-link:hover,
     .navbar-navy .nav-link:focus,
-    .navbar-navy .nav-link.active{ color: var(--accent) !important; }
+    .navbar-navy .nav-link.active{ color: var(--primary) !important; }
 
-    @font-face {
-      font-family: 'AirMillhouse';
-      src: url('fonts/airmill_o.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'AirMillhouse';
-      src: url('fonts/air_mitalic.ttf') format('truetype');
-      font-weight: normal;
-      font-style: italic;
-    }
 
     .nav-item{
       font-family:"Teko";
@@ -139,25 +108,64 @@
     @media (min-width: 1400px) {
       .brand-logo { width: 12vw; }
     }
-      
+
+        /* Altura responsiva + recorte para que no “salte” */
+    .carousel-img{
+      height: clamp(220px, 45vw, 540px); /* ajusta a tu gusto */
+      object-fit: cover;
+      object-position: center;
+      user-select: none;
+    }
+
+    /* Que las flechas se vean bien en tema oscuro */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon{ filter: invert(1); }
+
+    /* Indicadores en tu paleta (negro/naranjo/blanco) */
+    .carousel-indicators [data-bs-target]{
+      background-color: #ffffff;
+      opacity: .6;
+    }
+    .carousel-indicators .active{
+      background-color: var(--brand);
+      opacity: 1;
+    }
+
+    /* === Tema oscuro global (negro/blanco/naranjo) === */
+    .site-dark { background: var(--bg); color: var(--text); }
+    .site-dark a { color: var(--text); text-decoration: none; }
+    .site-dark a:hover { color: var(--accent); }
+
+
+    .site-dark .card {
+      background: var(--surface);
+      border: 1px solid var(--border);color:var(--text)}
+    .site-dark .form-control,
+    .site-dark .form-select,
+    .site-dark .input-group-text{background:var(--surface);color:var(--text);border:1px solid var(--border)}
+    .site-dark .form-control::placeholder{color:var(--text-muted)}
+    .site-dark .form-control:focus,
+    .site-dark .form-select:focus{border-color:var(--primary);box-shadow:0 0 0 .2rem rgba(194,65,12,.35)}
+
+    .site-dark .btn-primary{background:var(--primary);border-color:var(--primary);color: #fff}
+    .site-dark .btn-primary:hover{background:var(--primary-hover);border-color:var(--primary-hover)}
+    .site-dark .btn-outline-primary{color:var(--accent);border-color:var(--accent);background:transparent}
+    .site-dark .btn-outline-primary:hover{background:var(--accent);color:#fff}
+
+        
   </style>
 
 </head>
 
-<body>
+<body class="site-dark">
   <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm navbar-navy">
         <div class="container-fluid">
 
             <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
-              <img src="/PrimerWebSite/NaranjoGarage_final.tmp.tmp.png" alt="Naranjo Garage" class="brand-logo"> 
+              <img src="/PrimerWebSite/NaranjoGarage_final.tmp.tmp.png" alt="Naranjo Garage" class="brand-logo"/> 
             </a>
 
-<!--           <span class="brand-text fill-white">
-              <span class="brand-naranjo">Naranjo</span>
-              <span class="brand-garage">Garage</span>
-            </span>
-          -->         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
               aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
               <span class="navbar-toggler-icon"></span>
@@ -185,8 +193,8 @@
           <div class="card-body">
             <h6 class="card-title mb-3">Contacto rápido</h6>
             <div class="d-grid gap-2">
-              <a class="btn btn-outline-success btn-sm" href="https://wa.me/56912345678" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-1"></i> WhatsApp</a>
-              <a class="btn btn-outline-primary btn-sm" href="tel:+56912345678"><i class="fa-solid fa-phone me-1"></i> Llamar</a>
+              <a class="btn btn-outline-success btn-sm" href="https://wa.me/56972109400" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-1"></i> WhatsApp</a>
+              <a class="btn btn-outline-primary btn-sm" href="tel:+56972109400"><i class="fa-solid fa-phone me-1"></i> Llamar</a>
               <a class="btn btn-outline-secondary btn-sm" href="mailto:taller@example.com"><i class="fa-regular fa-envelope me-1"></i> Email</a>
             </div>
           </div>
@@ -207,27 +215,37 @@
       <!-- Col 8 (centro) -->
       <section class="col-12 col-lg-8">
         <!-- carrousel--->
-        <div id="carouselExampleControls" class="carousel slide" data-bd-ride="carousel">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="/PrimerWebSite/auto1.jpeg" alt="Foto 1">
+              <img class="d-block w-100 carousel-img" src="/PrimerWebSite/auto1.jpeg" alt="Foto 1">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/PrimerWebSite/auto2.jpg" alt="Foto 2">
+              <img class="d-block w-100 carousel-img" src="/PrimerWebSite/auto2.jpg" alt="Foto 2">
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/PrimerWebSite/auto3.jpg" alt="Foto 3">
+              <img class="d-block w-100 carousel-img" src="/PrimerWebSite/auto3.jpg" alt="Foto 3">
             </div>
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+
+          <!-- Controles -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </a>
+            <span class="visually-hidden">Siguiente</span>
+          </button>
+
+          <!-- Indicadores (opcional) -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
         </div>
+
 
         <br>
 
@@ -322,18 +340,17 @@
             <h6 class="card-title">Ubicación</h6>
             <div class="ratio ratio-1x1 rounded">
               <!-- Reemplaza el src por tu Google Maps embed -->
-              <iframe
-                src="https://maps.google.com/maps?q=La%20Serena&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                title="Mapa del taller" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6915.193521217009!2d-71.2754015!3d-29.933509!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691cbfe69512fdd%3A0x2604e6a917f9bc12!2sCaba%C3%B1as%20Casa%20de%20Campo!5e0!3m2!1ses!2scl!4v1756602808752!5m2!1ses!2scl" 
+              width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <p class="small mt-2 mb-0">Av. Ejemplo 1234, La Serena</p>
+            <p class="small mt-2 mb-0">Cabañas casa de campo, ruta 5, La Serena</p>
           </div>
         </div>
 
         <div class="card">
           <div class="card-body">
             <h6 class="card-title">Métodos de pago</h6>
-            <p class="small mb-0">Efectivo, Transferencia, Débito/Crédito.</p>
+            <p class="small mb-0">Efectivo, Transferencia.</p>
           </div>
         </div>
       </aside>
@@ -344,12 +361,12 @@
   <footer class="bg-dark text-white py-4">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <span class="small">&copy; <span id="year"></span> Taller La Serena. Todos los derechos reservados.</span>
-      <span class="small">Emergencias: <a class="link-light" href="tel:+56912345678">+56 9 1234 5678</a></span>
+      <span class="small">Emergencias: <a class="link-light" href="tel:+56972109400">+56 9 7210 9400</a></span>
     </div>
   </footer>
 
   <!-- Botón flotante WhatsApp -->
-  <a class="btn btn-success rounded-pill btn-wa" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <a class="btn btn-success rounded-pill btn-wa" href="https://wa.me/56972109400" target="_blank" rel="noopener" aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp fa-2x"></i>
   </a>
 
